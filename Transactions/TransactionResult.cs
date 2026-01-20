@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EMV.Transactions
+namespace EMV.Transaction
 {
-    internal class EmvTransactions
+    internal enum TransactionResult
     {
+        Approved,
+        Declined
     }
 }

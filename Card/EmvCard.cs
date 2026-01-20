@@ -37,7 +37,11 @@ namespace EMV.Card
             return "**** **** **** " + _pan.Substring(_pan.Length - 4);
         }
 
-        // Things the card can do
+        // ---Things the card can do---
+        public bool VerifyPin(string enteredPin)
+        {
+            return _pin == enteredPin;
+        }
         public bool IsExpired()
         {
             return DateTime.Now > _expiryDate;

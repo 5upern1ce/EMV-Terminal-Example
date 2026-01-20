@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EMV.Card;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,30 @@ namespace EMV.Terminal
         private string _countryCode;
         private bool _supportsPin;
         private bool _supportsContactless;
+
+        public EmvTerminal(
+            string terminalId,
+            string countryCode,
+            bool supportsPin,
+            bool supportsContactless)
+        {
+            _terminalId = terminalId;
+            _countryCode = countryCode;
+            _supportsPin = supportsPin;
+            _supportsContactless = supportsContactless;
+        }
+
+        public bool RequiresPin(decimal amount, EmvCard card)
+        {
+            if (!_supportsPin)
+                return false;
+
+            return card.RequiresPin(amount);
+        }
+
+        public string GetTerminalInfo()
+        {
+            return $"Terminal {_terminalId} ({_countryCode})";
+        }
     }
 }
