@@ -10,20 +10,9 @@ class Program
     static void Main(string[] args)
     {
         // Set things up
-        var card = new EmvCard(
-            "1234567812345678",
-            DateTime.Now.AddYears(2),
-            10.00m,
-            "1234"
-        );
+        var card = TerminalUI.SetCard();
 
-        var terminal = new EmvTerminal(
-            "TERM001",
-            // 826 is the country code for the UK (ISO 3166-1)
-            "826",
-            true,
-            true
-        );
+        var terminal = TerminalUI.SetTerminal();
 
         var bank = new IssuerBank(100.00m);
 
